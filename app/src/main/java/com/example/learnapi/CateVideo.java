@@ -24,7 +24,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class Home extends Fragment {
+public class CateVideo extends Fragment {
 
 
     private ArrayList<Integer> pkPost = new ArrayList<>();
@@ -40,28 +40,39 @@ public class Home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.post_list, container, false);
+        View rootView = inflater.inflate(R.layout.cate_video_list, container, false);
 
-        recyclerView = rootView.findViewById(R.id.recycler_post_list);
+        recyclerView = rootView.findViewById(R.id.recycler_cate_post_list);
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setTitle("Loading...");
         progressDialog.show();
 
+
+
         if ( InternetUtil.isInternetOnline(getActivity()) ){
             ClearList();
-            showAllPosts();
+            Bundle bundle = this.getArguments();
+            if (bundle != null)
+            {
+                ClearList();
+                Integer bundle_id = bundle.getInt("id");
+                showAllPosts(bundle_id);
+                String bundleCate = bundle.getString("category");
+                getActivity().setTitle(bundleCate);
+            }
+
         }
 
 
-        getActivity().setTitle("Cook-Store");
 
         return rootView;
 
 
     }
 
-    private void showAllPosts() {
+    private void showAllPosts(Integer bundleId) {
 
+        String strID = String.valueOf(bundleId);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(PostApi.API_URL)
@@ -69,7 +80,7 @@ public class Home extends Fragment {
                 .build();
 
         PostApi postApi= retrofit.create(PostApi.class);
-        Call<List<PostModel>> call = postApi.getListPost();
+        Call<List<PostModel>> call = postApi.getCateVideo(strID);
 
         call.enqueue(new Callback<List<PostModel>>() {
             @Override
@@ -120,7 +131,7 @@ public class Home extends Fragment {
 
     private void initRecyclerView(){
         Log.d("Home", "initRecyclerView: init recyclerview.");
-        RecyclerHomeList adapter = new RecyclerHomeList(pkPost,  namePost , authorPost, imgPost, getActivity());
+        RecyclerCateVideoList adapter = new RecyclerCateVideoList(pkPost,  namePost , authorPost, imgPost, getActivity());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
@@ -131,33 +142,12 @@ public class Home extends Fragment {
         pkPost.clear();
         namePost.clear();
 
-        RecyclerHomeList adapter = new RecyclerHomeList(pkPost,  namePost , authorPost,imgPost, getActivity());
+        RecyclerCateVideoList adapter = new RecyclerCateVideoList(pkPost,  namePost , authorPost,imgPost, getActivity());
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
 
 
-
-
-
-    @Override
-    public void onResume() {
-
-        super.onResume();
-
-        getView().setFocusableInTouchMode(true);
-        getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    getActivity().finish();
-                    return true;
-                }
-                return false;
-            }
-        });
-    }
 
 
 }

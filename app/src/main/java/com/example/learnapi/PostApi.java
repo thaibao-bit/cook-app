@@ -1,4 +1,5 @@
 package com.example.learnapi;
+import com.example.learnapi.Model.CateModel;
 import com.example.learnapi.Model.Comment;
 import com.example.learnapi.Model.Login;
 import com.example.learnapi.Model.PostModel;
@@ -45,6 +46,12 @@ public interface PostApi {
 
     @POST("postcomment/")
     Call<Comment> postComment(@Header("Authorization") String authToken, @Body Comment comment);
+
+    @GET("categories/")
+    Call<List<CateModel>> getCateList();
+
+    @GET("videocategory/{id}/")
+    Call<List<PostModel>>getCateVideo(@Path(value = "id", encoded = true) String id);
 //
 //    @POST("add/")
 //    Call<PostModel> addPost(@Header("Authorization")  String authToken, @Body PostModel postModel);

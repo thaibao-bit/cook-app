@@ -74,8 +74,9 @@ public class Footer extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.lbuttonCategory:
-                fragment = new Home();
+                fragment = new Category();
                 replaceFragment(fragment);
+                break;
 //
 //            case R.id.lbuttonPlus:
 //                runtimePermission();

@@ -3,11 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/drawable/ic_podval_category.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/drawable/ic_podval_dom.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/drawable/ic_podval_plus.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/drawable/ic_podval_profile.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/cate_video_item.xml" value="0.2359375" />
+        <entry key="app/src/main/res/layout/cate_video_list.xml" value="0.2359375" />
+        <entry key="app/src/main/res/layout/category.xml" value="0.2359375" />
+        <entry key="app/src/main/res/layout/category_item.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/comment_item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/footer.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/layout/post_list.xml" value="0.18432971014492755" />
