@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -30,6 +31,7 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
     EditText Edreg_username;
     EditText Edreg_password;
     EditText Edreg_email;
+    TextView to_registration_button;
 
     @Nullable
     @Override
@@ -37,11 +39,11 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
 
 
 
-        View rootView = inflater.inflate(R.layout.profile_login, container, false);
+        View rootView = inflater.inflate(R.layout.login_layout, container, false);
 
 
         Button logBtn = (Button) rootView.findViewById(R.id.login_button);
-        Button to_reg_Btn = (Button) rootView.findViewById(R.id.to_registration_button);
+        TextView to_registration_button = (TextView) rootView.findViewById(R.id.to_registration_button);
 
 
         Edreg_username = (EditText) rootView.findViewById(R.id.reg_username);
@@ -52,7 +54,7 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
 
 
         logBtn.setOnClickListener(this);
-        to_reg_Btn.setOnClickListener(this);
+        to_registration_button.setOnClickListener(this);
 
         return rootView;
 

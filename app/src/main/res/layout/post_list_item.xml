@@ -24,29 +24,43 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="9dp"
             android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/cardview_dark_background"
+            android:background="@color/cardview_shadow_start_color"
             >
             <ImageView
                 android:id="@+id/thumbnail"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"></ImageView>
+                android:layout_height="190dp"/>
             <TextView
-                android:id="@+id/post_listitem_id"
+                android:id="@+id/postAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="Punjabi"
+                android:textSize="12.7sp"
+                android:layout_marginTop="11.7dp"
+                android:textColor="#a5a5a5"
 
                 />
             <TextView
                 android:id="@+id/post_listitem_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="Parata"
+                android:textSize="16.7sp"
+                android:layout_marginTop="13dp"
+                android:textColor="#373737"
                 />
+
             <TextView
-                android:id="@+id/postAuthor"
+                android:id="@+id/post_listitem_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="235 Review"
+                android:textSize="9.7sp"
+                android:layout_marginLeft="3dp"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:textColor="#a5a5a5"
                 />
 
 

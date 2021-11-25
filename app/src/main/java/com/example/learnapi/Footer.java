@@ -63,13 +63,14 @@ public class Footer extends Fragment implements View.OnClickListener {
                 replaceFragment(fragment);
                 break;
             case R.id.lbuttonLogin:
-                if (CheckLogin()){
-                    fragment = new Home();
-                    Toast.makeText(getContext(), "You has been logged in", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    fragment = new ProfileLogin();
-                }
+//                if (CheckLogin()){
+//                    fragment = new Home();
+//                    Toast.makeText(getContext(), "You has been logged in", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    fragment = new ProfileLogin();
+//                }
+                fragment = new ProfileLogin();
                 replaceFragment(fragment);
                 break;
 
@@ -91,7 +92,7 @@ public class Footer extends Fragment implements View.OnClickListener {
             case R.id.lbuttonProfile:
 
                 if (CheckLogin()) {
-                    fragment = new Home();
+                    fragment = new MyProfile();
                 }else {
                     fragment = new ProfileLogin();
                 }

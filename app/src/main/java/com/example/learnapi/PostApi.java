@@ -3,6 +3,7 @@ import com.example.learnapi.Model.CateModel;
 import com.example.learnapi.Model.Comment;
 import com.example.learnapi.Model.Login;
 import com.example.learnapi.Model.PostModel;
+import com.example.learnapi.Model.ProfileModel;
 import com.example.learnapi.Model.User;
 
 import java.util.List;
@@ -56,8 +57,12 @@ public interface PostApi {
 //    @POST("add/")
 //    Call<PostModel> addPost(@Header("Authorization")  String authToken, @Body PostModel postModel);
 //
-//    @GET("profile/list/")
-//    Call<List<PostModel>> getProfileList(@Header("Authorization")  String authToken);
+    @GET("myvideo/")
+    Call<List<PostModel>> getMyVideo(@Header("Authorization")  String authToken);
+
+    @GET("myprofile/")
+    Call<List<ProfileModel>> getMyProfile(@Header("Authorization")  String authToken);
+
 //
 //
 //    @PUT("profile/edit/{id}/")

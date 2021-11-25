@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -36,10 +37,10 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
 
 
 
-        View rootView = inflater.inflate(R.layout.profile_register, container, false);
+        View rootView = inflater.inflate(R.layout.register_layout, container, false);
 
         Button regBtn = (Button) rootView.findViewById(R.id.registration_button);
-        Button logBtn = (Button) rootView.findViewById(R.id.to_login_button);
+        TextView logBtn = (TextView) rootView.findViewById(R.id.to_login_button);
 
         Edreg_username = (EditText) rootView.findViewById(R.id.reg_username);
         Edreg_password = (EditText) rootView.findViewById(R.id.reg_password);
