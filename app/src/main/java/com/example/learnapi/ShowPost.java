@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learnapi.Model.Comment;
+import com.example.learnapi.Model.LikeModel;
 import com.example.learnapi.Model.PostModel;
 
 import java.util.ArrayList;
@@ -41,7 +43,7 @@ public class ShowPost extends Fragment implements View.OnClickListener {
 
     TextView v_sh_title;
     TextView v_sh_text;
-    TextView v_sh_id, show_ingre, show_step;
+    TextView v_sh_like, show_ingre, show_step;
     VideoView videoView;
     ProgressDialog progressDialog;
     private ArrayList<String> userID = new ArrayList<>();
@@ -50,6 +52,7 @@ public class ShowPost extends Fragment implements View.OnClickListener {
     RecyclerView recyclerComment;
     EditText edtComment;
     Button btnComment;
+    LinearLayout layoutlike;
 
 
     @Nullable
@@ -60,14 +63,17 @@ public class ShowPost extends Fragment implements View.OnClickListener {
 
         v_sh_title = rootView.findViewById(R.id.vshow_title);
         v_sh_text = rootView.findViewById(R.id.vshow_text);
-        v_sh_id = rootView.findViewById(R.id.vshow_id);
+        v_sh_like = rootView.findViewById(R.id.vshow_like);
         show_ingre = rootView.findViewById(R.id.show_ingre);
         show_step = rootView.findViewById(R.id.show_step);
         videoView = rootView.findViewById(R.id.videoView);
         recyclerComment = rootView.findViewById(R.id.recycler_comment);
         edtComment = rootView.findViewById(R.id.edtComment);
         btnComment = rootView.findViewById(R.id.comment_button);
+        layoutlike = rootView.findViewById(R.id.layout_like);
 
+
+        layoutlike.setOnClickListener(this);
         btnComment.setOnClickListener(this);
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setTitle("Loading...");
@@ -100,6 +106,36 @@ public class ShowPost extends Fragment implements View.OnClickListener {
         RecyclerCommentList adapter = new RecyclerCommentList(userID, content, videoID, getActivity());
         adapter.notifyDataSetChanged();
         recyclerComment.setAdapter(adapter);
+    }
+
+    public void LikeToggle(Integer id){
+        String str_id = String.valueOf(id);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(PostApi.API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        PostApi postApi = retrofit.create(PostApi.class);
+        Call<LikeModel> likeModelCall = postApi.getLikeToggle(str_id);
+        likeModelCall.enqueue(new Callback<LikeModel>() {
+            @Override
+            public void onResponse(Call<LikeModel> call, Response<LikeModel> response) {
+                if (response.isSuccessful())
+                {
+                    if (response.body() != null){
+                        LikeModel likeModel = response.body();
+                        v_sh_like.setText(String.valueOf(likeModel.getCount()));
+                    }
+                }
+                else {
+                    Toast.makeText(getContext(), "Like response failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LikeModel> call, Throwable t) {
+                Toast.makeText(getContext(), "like failed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void AddPostServer(Comment comment) {
@@ -156,14 +192,14 @@ public class ShowPost extends Fragment implements View.OnClickListener {
 
                         String v_sh_str_title = postValues.getCaption();
                         String v_sh_str_text = postValues.getDescription();
-                        Integer v_sh_str_id = postValues.getId();
+                        Integer v_sh_str_like = postValues.getLikecount();
                         String url = postValues.getVideo();
                         String ingre = postValues.getIngredients();
                         String step = postValues.getSteps();
 
                         v_sh_title.setText(v_sh_str_title);
                         v_sh_text.setText(v_sh_str_text);
-                        v_sh_id.setText(String.valueOf(v_sh_str_id));
+                        v_sh_like.setText(String.valueOf(v_sh_str_like));
                         show_ingre.setText(ingre);
                         show_step.setText(step);
                         videoView.setVideoURI(Uri.parse(url));
@@ -224,20 +260,33 @@ public class ShowPost extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        progressDialog.setTitle("Posting...");
-        progressDialog.show();
-        PostComment();
         Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            ClearList();
-            Integer bundle_id = bundle.getInt("id");
-            Toast.makeText(getContext(), bundle_id.toString(), Toast.LENGTH_SHORT).show();
-            GetServerData(bundle_id);
+        switch (v.getId()) {
+            case R.id.comment_button:
+                progressDialog.setTitle("Posting...");
+                progressDialog.show();
+                PostComment();
 
+                if (bundle != null) {
+                    ClearList();
+                    Integer bundle_id = bundle.getInt("id");
+                    Toast.makeText(getContext(), bundle_id.toString(), Toast.LENGTH_SHORT).show();
+                    GetServerData(bundle_id);
+                }
+                break;
+            case R.id.layout_like:
+
+                if (bundle != null) {
+
+                    Integer bundle_id = bundle.getInt("id");
+                    LikeToggle(bundle_id);
+                }
+
+                break;
+        }
 
         }
 
-    }
 
     private void PostComment() {
         if (!IsEmptyEditTextLogin()) {

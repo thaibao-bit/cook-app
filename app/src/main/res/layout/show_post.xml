@@ -55,8 +55,8 @@
                     android:background="#ffffff">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginLeft="16dp"
                         android:orientation="vertical"
@@ -78,13 +78,13 @@
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
+                            android:layout_height="30dp"
                             android:text="Url:"
                             />
 
                         <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="150dp">
                             <VideoView
                                 android:id="@+id/videoView"
                                 android:layout_width="match_parent"
@@ -106,17 +106,24 @@
                             android:textColor="#000"/>
 
 
-                        <TextView
+                        <LinearLayout
+                            android:id="@+id/layout_like"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="ID:"/>
+                            android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/vshow_id"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text=""
+                            android:id="@+id/vshow_like"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10000"
                             android:textColor="#000"/>
+                        <TextView
+                            android:id="@+id/t11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" likes"/>
+                        </LinearLayout>
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"

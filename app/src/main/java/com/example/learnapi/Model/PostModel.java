@@ -5,6 +5,7 @@ public class PostModel {
 
     private Integer id;
     private String lastupdate;
+    private Integer likecount;
     private String caption;
     private String video;
     private String image;
@@ -145,5 +146,13 @@ public class PostModel {
 
     public void setCategory(Integer category) {
         this.category = category;
+    }
+
+    public Integer getLikecount() {
+        return likecount;
+    }
+
+    public void setLikecount(Integer likecount) {
+        this.likecount = likecount;
     }
 }

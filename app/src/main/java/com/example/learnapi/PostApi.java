@@ -1,6 +1,7 @@
 package com.example.learnapi;
 import com.example.learnapi.Model.CateModel;
 import com.example.learnapi.Model.Comment;
+import com.example.learnapi.Model.LikeModel;
 import com.example.learnapi.Model.Login;
 import com.example.learnapi.Model.PostModel;
 import com.example.learnapi.Model.ProfileModel;
@@ -68,6 +69,9 @@ public interface PostApi {
 
     @GET("videouser/{id}")
     Call<List<PostModel>> getUserVideo(@Path(value = "id", encoded = true) String id);
+
+    @GET("liketoggle/{id}")
+    Call<LikeModel> getLikeToggle(@Path(value = "id", encoded = true) String id);
 
 //
 //
