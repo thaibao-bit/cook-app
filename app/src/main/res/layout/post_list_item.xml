@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/parent_layout">
+    app:circularflow_radiusInDP="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,69 +13,72 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
+        android:background="@drawable/video"
+        android:backgroundTint="#FFFFFF"
         android:orientation="vertical"
-        android:background="#ffffff">
-
+        android:padding="2dp">
 
 
         <LinearLayout
-            android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/cardview_dark_background"
-            android:background="@color/cardview_shadow_start_color"
-            >
-            <ImageView
-                android:id="@+id/thumbnail"
-                android:layout_width="match_parent"
-                android:layout_height="190dp"/>
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:background="@drawable/video"
+            android:backgroundTint="#ABD5F6"
+            android:orientation="vertical"
+            android:padding="3dp">
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/frame"/>
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/frame"
+                    android:src="@drawable/ic_podval_dom"/>
+            </FrameLayout>
             <TextView
                 android:id="@+id/postAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:text="Punjabi"
-                android:textSize="12.7sp"
-                android:layout_marginTop="11.7dp"
-                android:textColor="#a5a5a5"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                app:layout_constraintBaseline_toBottomOf="@id/thumbnail" />
 
-                />
             <TextView
                 android:id="@+id/post_listitem_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Parata"
-                android:textSize="16.7sp"
-                android:layout_marginTop="13dp"
                 android:textColor="#373737"
-                />
+                android:textSize="16.7sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/post_listitem_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="235 Review"
-                android:textSize="9.7sp"
-                android:layout_marginLeft="3dp"
                 android:layout_gravity="center"
                 android:gravity="center_horizontal"
-                android:textColor="#a5a5a5"
-                />
-
+                android:text="235 Review"
+                android:textColor="#000000"
+                android:textSize="10dp" />
 
 
         </LinearLayout>
 
 
-
     </LinearLayout>
-
-
-
-
 
 
 </RelativeLayout>

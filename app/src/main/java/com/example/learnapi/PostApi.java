@@ -63,6 +63,12 @@ public interface PostApi {
     @GET("myprofile/")
     Call<List<ProfileModel>> getMyProfile(@Header("Authorization")  String authToken);
 
+    @GET("users/{id}")
+    Call<ProfileModel> getUser(@Path(value = "id", encoded = true) String id);
+
+    @GET("videouser/{id}")
+    Call<List<PostModel>> getUserVideo(@Path(value = "id", encoded = true) String id);
+
 //
 //
 //    @PUT("profile/edit/{id}/")

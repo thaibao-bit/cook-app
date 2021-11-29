@@ -26,15 +26,17 @@ public class RecyclerHomeList extends RecyclerView.Adapter<RecyclerHomeList.View
 
     private ArrayList<Integer> pkPost = new ArrayList<>();
     private ArrayList<String> namePost = new ArrayList<>();
-    private ArrayList<Integer> authorPost = new ArrayList<>();
+    private ArrayList<String> authorPost = new ArrayList<>();
+    private ArrayList<Integer> authorID = new ArrayList<>();
     private ArrayList<String> imgUrl = new ArrayList<>();
 
     private Context mContext;
 
-    public RecyclerHomeList(ArrayList<Integer> pkPost, ArrayList<String> namePost, ArrayList<Integer> authorPost,ArrayList<String> imgUrl, Context mContext) {
+    public RecyclerHomeList(ArrayList<Integer> pkPost, ArrayList<String> namePost, ArrayList<String> authorPost, ArrayList<Integer> authorID, ArrayList<String> imgUrl, Context mContext) {
         this.pkPost = pkPost;
         this.namePost = namePost;
         this.authorPost = authorPost;
+        this.authorID = authorID;
         this.imgUrl = imgUrl;
         this.mContext = mContext;
     }
@@ -56,6 +58,23 @@ public class RecyclerHomeList extends RecyclerView.Adapter<RecyclerHomeList.View
                 .load(String.valueOf(imgUrl.get(position)))
                 .error(R.drawable.ic_podval_plus)
                 .into(holder.thumbnail);
+        holder.textViewAuthor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("user_id",authorID.get(position));
+                bundle.putString("bun_username", authorPost.get(position));// Put anything what you want
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Fragment myFragment = new UserInfo();
+                myFragment.setArguments(bundle);
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, myFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override

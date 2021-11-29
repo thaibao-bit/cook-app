@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/drawable/frame.xml" value="0.1265625" />
         <entry key="app/src/main/res/drawable/ic_podval_category.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/drawable/ic_podval_dom.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/drawable/ic_podval_plus.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/drawable/ic_podval_profile.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/drawable/login_button_bk.xml" value="0.2520833333333333" />
+        <entry key="app/src/main/res/drawable/radius.xml" value="0.1265625" />
+        <entry key="app/src/main/res/drawable/text.xml" value="0.1265625" />
+        <entry key="app/src/main/res/drawable/video.xml" value="0.1265625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/cate_video_item.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/cate_video_list.xml" value="0.2359375" />
@@ -27,6 +31,7 @@
         <entry key="app/src/main/res/layout/register.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/register_layout.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/show_post.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/user_info.xml" value="0.1171875" />
       </map>
     </option>
   </component>

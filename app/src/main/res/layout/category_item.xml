@@ -11,32 +11,29 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
-        android:orientation="vertical"
-        android:background="#ffffff">
-
-
+        android:background="@drawable/radius"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_marginRight="16dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="9dp"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="10dp"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/cate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Breakfast"
-                />
-
-
+                android:textColor="#000000"
+                android:textColorHighlight="#FFC107"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
-
 
 
     </LinearLayout>

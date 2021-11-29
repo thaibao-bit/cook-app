@@ -3,12 +3,21 @@ package com.example.learnapi.Model;
 public class Comment {
     int id;
     String comment;
+    String username;
     int user;
     int video;
 
     public Comment(String comment, int video) {
         this.comment = comment;
         this.video = video;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getId() {

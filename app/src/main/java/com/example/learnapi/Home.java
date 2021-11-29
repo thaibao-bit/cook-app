@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learnapi.Model.PostModel;
+import com.example.learnapi.Model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,9 @@ public class Home extends Fragment {
 
     private ArrayList<Integer> pkPost = new ArrayList<>();
     private ArrayList<String> namePost = new ArrayList<>();
-    private ArrayList<Integer> authorPost = new ArrayList<>();
+    private ArrayList<String> authorPost = new ArrayList<>();
+    private ArrayList<String> authorText = new ArrayList<>();
+    private ArrayList<Integer> authorID = new ArrayList<>();
     private ArrayList<String> imgPost = new ArrayList<>();
     private RecyclerView recyclerView;
     ProgressDialog progressDialog;
@@ -83,13 +87,17 @@ public class Home extends Fragment {
 
                         for(PostModel h:postList){
 
+
+                            Integer au_id = h.getAuthor();
+                            authorID.add(au_id);
+
                             Integer cat_id = h.getId();
                             pkPost.add(cat_id);
 
                             String cat_name = h.getCaption();
                             namePost.add(cat_name);
 
-                            Integer cat_author = h.getAuthor();
+                            String cat_author = h.getUsername();
                             authorPost.add(cat_author);
 
                             String cat_img = h.getImage();
@@ -120,7 +128,7 @@ public class Home extends Fragment {
 
     private void initRecyclerView(){
         Log.d("Home", "initRecyclerView: init recyclerview.");
-        RecyclerHomeList adapter = new RecyclerHomeList(pkPost,  namePost , authorPost, imgPost, getActivity());
+        RecyclerHomeList adapter = new RecyclerHomeList(pkPost,  namePost , authorPost,authorID, imgPost, getActivity());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
@@ -131,7 +139,7 @@ public class Home extends Fragment {
         pkPost.clear();
         namePost.clear();
 
-        RecyclerHomeList adapter = new RecyclerHomeList(pkPost,  namePost , authorPost,imgPost, getActivity());
+        RecyclerHomeList adapter = new RecyclerHomeList(pkPost,  namePost , authorPost,authorID,imgPost, getActivity());
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }

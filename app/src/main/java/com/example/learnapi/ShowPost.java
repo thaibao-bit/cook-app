@@ -41,12 +41,12 @@ public class ShowPost extends Fragment implements View.OnClickListener {
 
     TextView v_sh_title;
     TextView v_sh_text;
-    TextView v_sh_id;
+    TextView v_sh_id, show_ingre, show_step;
     VideoView videoView;
     ProgressDialog progressDialog;
-    private ArrayList<Integer> userID = new ArrayList<>();
+    private ArrayList<String> userID = new ArrayList<>();
     private ArrayList<String> content = new ArrayList<>();
-    private ArrayList<Integer> videoID = new ArrayList<>();
+    private ArrayList<Integer> videoID = new ArrayList<>(); // Video id but it's userID
     RecyclerView recyclerComment;
     EditText edtComment;
     Button btnComment;
@@ -61,6 +61,8 @@ public class ShowPost extends Fragment implements View.OnClickListener {
         v_sh_title = rootView.findViewById(R.id.vshow_title);
         v_sh_text = rootView.findViewById(R.id.vshow_text);
         v_sh_id = rootView.findViewById(R.id.vshow_id);
+        show_ingre = rootView.findViewById(R.id.show_ingre);
+        show_step = rootView.findViewById(R.id.show_step);
         videoView = rootView.findViewById(R.id.videoView);
         recyclerComment = rootView.findViewById(R.id.recycler_comment);
         edtComment = rootView.findViewById(R.id.edtComment);
@@ -156,10 +158,14 @@ public class ShowPost extends Fragment implements View.OnClickListener {
                         String v_sh_str_text = postValues.getDescription();
                         Integer v_sh_str_id = postValues.getId();
                         String url = postValues.getVideo();
+                        String ingre = postValues.getIngredients();
+                        String step = postValues.getSteps();
 
                         v_sh_title.setText(v_sh_str_title);
                         v_sh_text.setText(v_sh_str_text);
                         v_sh_id.setText(String.valueOf(v_sh_str_id));
+                        show_ingre.setText(ingre);
+                        show_step.setText(step);
                         videoView.setVideoURI(Uri.parse(url));
                         videoView.seekTo(1);
                         videoView.start();
@@ -190,9 +196,9 @@ public class ShowPost extends Fragment implements View.OnClickListener {
                     if (response.body() != null) {
                         List<Comment> commentList = response.body();
                         for (Comment h : commentList) {
-                            userID.add(h.getId());
+                            userID.add(h.getUsername());
                             content.add(h.getComment());
-                            videoID.add(h.getVideo());
+                            videoID.add(h.getUser());
                         }
                         initRecyclerview();
                     }

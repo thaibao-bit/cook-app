@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
@@ -38,16 +39,11 @@
             android:layout_above="@+id/footer"
             android:fillViewport="true">
 
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#F3F3F3"
                 android:orientation="vertical">
-
-
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -82,18 +78,18 @@
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="200dp"
                             android:text="Url:"
                             />
 
                         <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="300dp">
-                        <VideoView
-                            android:id="@+id/videoView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            />
+                            android:layout_height="wrap_content">
+                            <VideoView
+                                android:id="@+id/videoView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                />
                         </FrameLayout>
 
 
@@ -106,7 +102,7 @@
                             android:id="@+id/vshow_text"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="12334"
+                            android:text=""
                             android:textColor="#000"/>
 
 
@@ -119,7 +115,29 @@
                             android:id="@+id/vshow_id"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="12334"
+                            android:text=""
+                            android:textColor="#000"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Ingredients:"/>
+
+                        <TextView
+                            android:id="@+id/show_ingre"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text=""
+                            android:textColor="#000"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Steps:"/>
+
+                        <TextView
+                            android:id="@+id/show_step"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text=""
                             android:textColor="#000"/>
 
 
@@ -136,10 +154,12 @@
                     android:text="Comment:">
 
                 </TextView>
+
                 <EditText
                     android:id="@+id/edtComment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    tools:ignore="SpeakableTextPresentCheck">
 
                 </EditText>
                 <Button
@@ -148,12 +168,12 @@
                     android:layout_height="wrap_content"
                     android:text="Comment"
                     android:layout_gravity="center"></Button>
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recycler_comment"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-</androidx.recyclerview.widget.RecyclerView>
+                </androidx.recyclerview.widget.RecyclerView>
 
 
 
