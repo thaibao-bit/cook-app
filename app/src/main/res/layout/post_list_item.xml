@@ -7,78 +7,75 @@
     android:layout_height="wrap_content"
     app:circularflow_radiusInDP="5dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/video"
-        android:backgroundTint="#FFFFFF"
-        android:orientation="vertical"
-        android:padding="2dp">
-
-
-        <LinearLayout
+<androidx.cardview.widget.CardView
+    android:layout_width="400dp"
+    android:layout_height="200dp"
+    app:cardCornerRadius="20dp"
+    android:layout_centerInParent="true"
+    android:layout_margin="20dp">
+        <ImageView
+            android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:background="@drawable/video"
-            android:backgroundTint="#ABD5F6"
-            android:orientation="vertical"
-            android:padding="3dp">
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_launcher_background"
+            android:scaleType="centerCrop"
+            >
+        </ImageView>
 
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/frame"/>
-                <ImageView
-                    android:id="@+id/thumbnail"
-                    android:layout_width="250dp"
-                    android:layout_height="200dp"
-                    android:background="@drawable/frame"
-                    android:src="@drawable/ic_podval_dom"/>
-            </FrameLayout>
-            <TextView
-                android:id="@+id/postAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="Punjabi"
-                android:textColor="#000000"
-                android:textSize="14dp"
-                app:layout_constraintBaseline_toBottomOf="@id/thumbnail" />
-
-            <TextView
-                android:id="@+id/post_listitem_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Parata"
-                android:textColor="#373737"
-                android:textSize="16.7sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/post_listitem_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:text="235 Review"
-                android:textColor="#000000"
-                android:textSize="10dp" />
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/center_button"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:id="@+id/post_listitem_views"
+            android:textSize="14dp"
+            android:textStyle="italic"
+            android:textColor="#000000"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" views"
+            android:textSize="14dp"
+            android:textStyle="italic"
+            android:textColor="#000000"/>
 
         </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="author"
+            android:id="@+id/postAuthor"
+            android:textSize="16dp"
+            android:textStyle="normal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/center_button"
+            />
 
-
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recipe"
+            android:id="@+id/post_listitem_name"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/grey_border"
+            />
+</androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>

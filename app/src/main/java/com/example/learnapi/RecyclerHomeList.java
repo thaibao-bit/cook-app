@@ -24,20 +24,24 @@ public class RecyclerHomeList extends RecyclerView.Adapter<RecyclerHomeList.View
 
     private static final String TAG = "RecyclerProfileListAdapter";
 
+
     private ArrayList<Integer> pkPost = new ArrayList<>();
     private ArrayList<String> namePost = new ArrayList<>();
     private ArrayList<String> authorPost = new ArrayList<>();
     private ArrayList<Integer> authorID = new ArrayList<>();
     private ArrayList<String> imgUrl = new ArrayList<>();
-
+    private ArrayList<Integer> views = new ArrayList<>();
+    private ArrayList<Integer> likes = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerHomeList(ArrayList<Integer> pkPost, ArrayList<String> namePost, ArrayList<String> authorPost, ArrayList<Integer> authorID, ArrayList<String> imgUrl, Context mContext) {
+    public RecyclerHomeList(ArrayList<Integer> pkPost, ArrayList<String> namePost, ArrayList<String> authorPost, ArrayList<Integer> authorID, ArrayList<String> imgUrl,ArrayList<Integer> views, ArrayList<Integer> likes, Context mContext) {
         this.pkPost = pkPost;
         this.namePost = namePost;
         this.authorPost = authorPost;
         this.authorID = authorID;
         this.imgUrl = imgUrl;
+        this.views = views;
+        this.likes = likes;
         this.mContext = mContext;
     }
 
@@ -51,8 +55,8 @@ public class RecyclerHomeList extends RecyclerView.Adapter<RecyclerHomeList.View
     @Override
     public void onBindViewHolder(RecyclerHomeList.ViewHolder holder, final int position) {
 
-        holder.TId.setText(String.valueOf(pkPost.get(position)));
-        holder.TName.setText(namePost.get(position));
+        holder.TViews.setText(String.valueOf(views.get(position)));
+        holder.TName.setText(String.valueOf(namePost.get(position)));
         holder.textViewAuthor.setText(String.valueOf(authorPost.get(position)));
         Picasso.get()
                 .load(String.valueOf(imgUrl.get(position)))
@@ -107,7 +111,7 @@ public class RecyclerHomeList extends RecyclerView.Adapter<RecyclerHomeList.View
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView TId;
+        TextView TViews;
         TextView TName;
         TextView textViewAuthor;
         ImageView thumbnail;
@@ -116,7 +120,7 @@ public class RecyclerHomeList extends RecyclerView.Adapter<RecyclerHomeList.View
         public ViewHolder(View itemView) {
             super(itemView);
 
-            TId = itemView.findViewById(R.id.post_listitem_id);
+            TViews = itemView.findViewById(R.id.post_listitem_views);
             TName = itemView.findViewById(R.id.post_listitem_name);
             textViewAuthor = itemView.findViewById(R.id.postAuthor);
             thumbnail = itemView.findViewById(R.id.thumbnail);

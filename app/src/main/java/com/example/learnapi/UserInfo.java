@@ -35,6 +35,8 @@ public class UserInfo extends Fragment {
     private ArrayList<String> authorPost = new ArrayList<>();
     private ArrayList<Integer> authorID = new ArrayList<>();
     private ArrayList<String> imgPost = new ArrayList<>();
+    private ArrayList<Integer> views = new ArrayList<>();
+    private ArrayList<Integer> likes = new ArrayList<>();
     private RecyclerView recyclerView;
     TextView txtUserName, txtEmail, txtName;
     ProgressDialog progressDialog;
@@ -160,7 +162,7 @@ public class UserInfo extends Fragment {
                             Integer cat_id = h.getId();
                             pkPost.add(cat_id);
 
-                            String cat_name = h.getCaption();
+                            String cat_name = h.getTitle();
                             namePost.add(cat_name);
 
                             String cat_author = h.getUsername();
@@ -168,6 +170,13 @@ public class UserInfo extends Fragment {
 
                             String cat_img = h.getImage();
                             imgPost.add(cat_img);
+
+                            Integer cat_view = h.getViews();
+                            views.add(cat_view);
+
+                            Integer cat_like = h.getLikecount();
+                            views.add(cat_like);
+
 
 
                         }
@@ -194,7 +203,7 @@ public class UserInfo extends Fragment {
 
     private void initRecyclerView(){
         Log.d("Home", "initRecyclerView: init recyclerview.");
-        RecyclerHomeList adapter = new RecyclerHomeList(pkPost,  namePost , authorPost,authorID, imgPost, getActivity());
+        RecyclerHomeList adapter = new RecyclerHomeList(pkPost,  namePost , authorPost,authorID, imgPost,views,likes, getActivity());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
@@ -205,7 +214,7 @@ public class UserInfo extends Fragment {
         pkPost.clear();
         namePost.clear();
 
-        RecyclerHomeList adapter = new RecyclerHomeList(pkPost,  namePost , authorPost,authorID,imgPost, getActivity());
+        RecyclerHomeList adapter = new RecyclerHomeList(pkPost,  namePost , authorPost,authorID,imgPost,views,likes, getActivity());
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }

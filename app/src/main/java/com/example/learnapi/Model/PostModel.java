@@ -6,7 +6,7 @@ public class PostModel {
     private Integer id;
     private String lastupdate;
     private Integer likecount;
-    private String caption;
+    private String title;
     private String video;
     private String image;
     private Integer upvotes;
@@ -14,7 +14,7 @@ public class PostModel {
     private Integer views;
     private String description;
     private String ingredients;
-    private String steps;
+    private String directions;
     private Integer author;
     private Integer category;
     private String username;
@@ -27,10 +27,10 @@ public class PostModel {
         this.username = username;
     }
 
-    public PostModel(Integer id, String lastupdate, String caption, String video, String image, Integer upvotes, Integer downvotes, Integer views, String description, String ingredients, String steps, Integer author, Integer category, String username) {
+    public PostModel(Integer id, String lastupdate, String title, String video, String image, Integer upvotes, Integer downvotes, Integer views, String description, String ingredients, String directions, Integer author, Integer category, String username) {
         this.id = id;
         this.lastupdate = lastupdate;
-        this.caption = caption;
+        this.title = title;
         this.video = video;
         this.image = image;
         this.upvotes = upvotes;
@@ -38,7 +38,7 @@ public class PostModel {
         this.views = views;
         this.description = description;
         this.ingredients = ingredients;
-        this.steps = steps;
+        this.directions = directions;
         this.author = author;
         this.category = category;
         this.username = username;
@@ -60,12 +60,12 @@ public class PostModel {
         this.lastupdate = lastupdate;
     }
 
-    public String getCaption() {
-        return caption;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCaption(String caption) {
-        this.caption = caption;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getVideo() {
@@ -124,12 +124,12 @@ public class PostModel {
         this.ingredients = ingredients;
     }
 
-    public String getSteps() {
-        return steps;
+    public String getDirections() {
+        return directions;
     }
 
-    public void setSteps(String steps) {
-        this.steps = steps;
+    public void setDirections(String directions) {
+        this.directions = directions;
     }
 
     public Integer getAuthor() {

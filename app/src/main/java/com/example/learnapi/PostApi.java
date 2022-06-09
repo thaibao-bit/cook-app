@@ -71,7 +71,7 @@ public interface PostApi {
     Call<List<PostModel>> getUserVideo(@Path(value = "id", encoded = true) String id);
 
     @GET("liketoggle/{id}")
-    Call<LikeModel> getLikeToggle(@Path(value = "id", encoded = true) String id);
+    Call<LikeModel> getLikeToggle(@Header("Authorization") String authToken, @Path(value = "id", encoded = true) String id);
 
 //
 //

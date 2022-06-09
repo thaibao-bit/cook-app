@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -26,22 +27,33 @@ public class RecyclerCateVideoList extends RecyclerView.Adapter<RecyclerCateVide
 
     private ArrayList<Integer> pkPost = new ArrayList<>();
     private ArrayList<String> namePost = new ArrayList<>();
-    private ArrayList<Integer> authorPost = new ArrayList<>();
+    private ArrayList<String> authorPost = new ArrayList<>();
+    private ArrayList<Integer> authorID = new ArrayList<>();
     private ArrayList<String> imgUrl = new ArrayList<>();
+    private ArrayList<Integer> views = new ArrayList<>();
+    private ArrayList<Integer> likes = new ArrayList<>();
 
     private Context mContext;
 
-    public RecyclerCateVideoList(ArrayList<Integer> pkPost, ArrayList<String> namePost, ArrayList<Integer> authorPost,ArrayList<String> imgUrl, Context mContext) {
+    public RecyclerCateVideoList(ArrayList<Integer> pkPost, ArrayList<String> namePost, ArrayList<String> authorPost,ArrayList<Integer> authorID,ArrayList<String> imgUrl,ArrayList<Integer> views, ArrayList<Integer> likes, Context mContext) {
         this.pkPost = pkPost;
         this.namePost = namePost;
         this.authorPost = authorPost;
+        this.authorID = authorID;
         this.imgUrl = imgUrl;
+        this.views = views;
+        this.likes = likes;
         this.mContext = mContext;
+
+    }
+
+    public RecyclerCateVideoList(ArrayList<Integer> pkPost, ArrayList<String> namePost, ArrayList<String> authorPost, ArrayList<String> imgUrl, ArrayList<Integer> views, ArrayList<Integer> likes, FragmentActivity activity) {
+
     }
 
     @Override
     public RecyclerCateVideoList.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cate_video_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_list_item, parent, false);
         RecyclerCateVideoList.ViewHolder holder = new RecyclerCateVideoList.ViewHolder(view);
         return holder;
     }
@@ -49,7 +61,7 @@ public class RecyclerCateVideoList extends RecyclerView.Adapter<RecyclerCateVide
     @Override
     public void onBindViewHolder(RecyclerCateVideoList.ViewHolder holder, final int position) {
 
-        holder.TId.setText(String.valueOf(pkPost.get(position)));
+        holder.TViews.setText(String.valueOf(views.get(position)));
         holder.TName.setText(namePost.get(position));
         holder.textViewAuthor.setText(String.valueOf(authorPost.get(position)));
         Picasso.get()
@@ -88,7 +100,7 @@ public class RecyclerCateVideoList extends RecyclerView.Adapter<RecyclerCateVide
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView TId;
+        TextView TViews;
         TextView TName;
         TextView textViewAuthor;
         ImageView thumbnail;
@@ -97,7 +109,7 @@ public class RecyclerCateVideoList extends RecyclerView.Adapter<RecyclerCateVide
         public ViewHolder(View itemView) {
             super(itemView);
 
-            TId = itemView.findViewById(R.id.cate_listitem_id);
+            TViews = itemView.findViewById(R.id.post_listitem_views);
             TName = itemView.findViewById(R.id.cate_listitem_name);
             textViewAuthor = itemView.findViewById(R.id.cate_postAuthor);
             thumbnail = itemView.findViewById(R.id.cate_item_thumbnail);

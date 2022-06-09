@@ -20,7 +20,6 @@
             android:gravity="center">
 
 
-
             <fragment
                 android:id="@+id/button_fragment1"
                 android:name="com.example.learnapi.Footer"

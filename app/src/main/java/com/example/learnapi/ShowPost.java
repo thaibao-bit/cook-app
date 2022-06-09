@@ -44,6 +44,7 @@ public class ShowPost extends Fragment implements View.OnClickListener {
     TextView v_sh_title;
     TextView v_sh_text;
     TextView v_sh_like, show_ingre, show_step;
+    Button button_like;
     VideoView videoView;
     ProgressDialog progressDialog;
     private ArrayList<String> userID = new ArrayList<>();
@@ -52,7 +53,6 @@ public class ShowPost extends Fragment implements View.OnClickListener {
     RecyclerView recyclerComment;
     EditText edtComment;
     Button btnComment;
-    LinearLayout layoutlike;
 
 
     @Nullable
@@ -70,10 +70,10 @@ public class ShowPost extends Fragment implements View.OnClickListener {
         recyclerComment = rootView.findViewById(R.id.recycler_comment);
         edtComment = rootView.findViewById(R.id.edtComment);
         btnComment = rootView.findViewById(R.id.comment_button);
-        layoutlike = rootView.findViewById(R.id.layout_like);
+        button_like = rootView.findViewById(R.id.button_like);
 
 
-        layoutlike.setOnClickListener(this);
+        button_like.setOnClickListener(this);
         btnComment.setOnClickListener(this);
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setTitle("Loading...");
@@ -114,8 +114,9 @@ public class ShowPost extends Fragment implements View.OnClickListener {
                 .baseUrl(PostApi.API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        String queryToken_ap = SharedDataGetSet.getMySavedToken(getActivity());
         PostApi postApi = retrofit.create(PostApi.class);
-        Call<LikeModel> likeModelCall = postApi.getLikeToggle(str_id);
+        Call<LikeModel> likeModelCall = postApi.getLikeToggle(queryToken_ap,str_id);
         likeModelCall.enqueue(new Callback<LikeModel>() {
             @Override
             public void onResponse(Call<LikeModel> call, Response<LikeModel> response) {
@@ -123,11 +124,12 @@ public class ShowPost extends Fragment implements View.OnClickListener {
                 {
                     if (response.body() != null){
                         LikeModel likeModel = response.body();
-                        v_sh_like.setText(String.valueOf(likeModel.getCount()));
+                        String like_num = "Like: " + String.valueOf(likeModel.getCount());
+                        v_sh_like.setText(like_num);
                     }
                 }
                 else {
-                    Toast.makeText(getContext(), "Like response failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "You need to login first", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -190,16 +192,18 @@ public class ShowPost extends Fragment implements View.OnClickListener {
 
                         PostModel postValues = response.body();
 
-                        String v_sh_str_title = postValues.getCaption();
+                        String v_sh_str_title = postValues.getTitle();
                         String v_sh_str_text = postValues.getDescription();
                         Integer v_sh_str_like = postValues.getLikecount();
+                        String string_like = "Like: " +v_sh_str_like;
                         String url = postValues.getVideo();
                         String ingre = postValues.getIngredients();
-                        String step = postValues.getSteps();
+                        String step = postValues.getDirections();
 
                         v_sh_title.setText(v_sh_str_title);
                         v_sh_text.setText(v_sh_str_text);
-                        v_sh_like.setText(String.valueOf(v_sh_str_like));
+                        v_sh_like.setText(string_like);
+//                        v_sh_like.setText(String.valueOf(v_sh_str_like));
                         show_ingre.setText(ingre);
                         show_step.setText(step);
                         videoView.setVideoURI(Uri.parse(url));
@@ -274,7 +278,7 @@ public class ShowPost extends Fragment implements View.OnClickListener {
                     GetServerData(bundle_id);
                 }
                 break;
-            case R.id.layout_like:
+            case R.id.button_like:
 
                 if (bundle != null) {
 
