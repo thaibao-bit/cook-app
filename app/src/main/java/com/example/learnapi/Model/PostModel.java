@@ -16,7 +16,6 @@ public class PostModel {
     private String ingredients;
     private String directions;
     private Integer author;
-    private Integer category;
     private String username;
 
     public String getUsername() {
@@ -40,7 +39,6 @@ public class PostModel {
         this.ingredients = ingredients;
         this.directions = directions;
         this.author = author;
-        this.category = category;
         this.username = username;
     }
 
@@ -140,13 +138,6 @@ public class PostModel {
         this.author = author;
     }
 
-    public Integer getCategory() {
-        return category;
-    }
-
-    public void setCategory(Integer category) {
-        this.category = category;
-    }
 
     public Integer getLikecount() {
         return likecount;
